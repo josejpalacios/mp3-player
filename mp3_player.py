@@ -12,6 +12,9 @@ class MP3Player:
         self.music = None
         self.playing = False
 
+        # Set title of window
+        window.title("MP3 Player")
+
         # Set up window
         window.geometry("300x200")
 
@@ -72,9 +75,11 @@ class MP3Player:
         Function to search for mp3 file.
         :return:
         """
-        # Search for mp3 file
-        self.music = filedialog.askopenfilename()
+        # Search for mp3 file path
+        self.music = filedialog.askopenfilename(filetypes=[("MP3 files", "*.mp3")])
+        # Get name of mp3 file
         music_file_name = Path(self.music).stem
+        # Set name of mp3 file
         self.music_name.set(music_file_name)
 
     def play_music(self, event):
